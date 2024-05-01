@@ -1,0 +1,42 @@
+---
+import "../styles/app.css";
+import ThemeSelector from "../components/ThemeSelector.astro";
+import LanguageSelector from "../components/LangSelector.astro";
+
+interface Props {
+    lang: string;
+}
+
+const { lang } = Astro.props;
+---
+
+<html lang={lang}>
+    <head>
+        <meta charset="UTF-8" />
+        <link
+            rel="icon"
+            type="image/x-icon"
+            href="https://github.com/simidzu2ay.png"
+        />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap"
+            rel="stylesheet"
+        />
+        <title>simidzu2ay</title>
+    </head>
+    <body>
+        <header
+            class="w-full min-h-16 bg-mantle px-4 py-2 flex gap-4 justify-center items-center"
+        >
+            <ThemeSelector />
+            <LanguageSelector />
+        </header>
+        <main>
+            <slot />
+        </main>
+        <footer class="min-h-16"></footer>
+    </body>
+</html>

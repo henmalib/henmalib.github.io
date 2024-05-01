@@ -1,0 +1,40 @@
+html,
+body {
+  @apply text-text bg-base min-h-screen;
+}
+
+:root {
+  --color-duration: 0;
+}
+
+* {
+  @apply transition-colors;
+  transition-duration: var(--color-duration);
+}
+
+.middle {
+  --margin: 25%;
+  margin: 2rem var(--margin);
+}
+
+@media screen and (max-width: 768px) {
+  .middle {
+    --margin: 5%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .middle {
+    --margin: 20%;
+  }
+}
+
+a {
+  @apply hover:text-mauve;
+}
+
+.noto-emoji {
+  font-family: "Noto Color Emoji", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}

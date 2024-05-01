@@ -59,7 +59,7 @@ const currentLange = langs.find((l) => l.path === currentLangPath)!;
             return;
         }
 
-        window.location.href = e.target!.dataset.href;
+        window.location.href = e.target!.dataset.href!;
         dropdown.parentElement!.classList.add("hidden");
         document.removeEventListener("click", outsideClickListener);
     };

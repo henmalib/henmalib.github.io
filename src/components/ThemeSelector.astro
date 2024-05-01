@@ -103,14 +103,12 @@ const themes = [
     };
 
     function outsideClickListener(event: MouseEvent) {
-        console.log("event");
         if (dropdown.contains(event.target as Node)) {
             return;
         }
 
         dropdown.parentElement!.classList.add("hidden");
         document.removeEventListener("click", outsideClickListener);
-        console.log("removeEvent");
     }
 
     setTimeout(() => {

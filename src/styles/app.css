@@ -17,15 +17,15 @@ body {
   margin: 2rem var(--margin);
 }
 
-@media screen and (max-width: 768px) {
-  .middle {
-    --margin: 5%;
-  }
-}
-
 @media screen and (max-width: 1200px) {
   .middle {
     --margin: 20%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .middle {
+    --margin: 5%;
   }
 }
 

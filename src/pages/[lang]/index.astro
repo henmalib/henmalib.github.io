@@ -101,7 +101,7 @@ const t = useTranslation(lang);
         const current = window.scrollY;
 
         // @ts-ignore
-        nekoImg.style = `--pos: ${(current / body.scrollHeight) * 100}%;`;
+        nekoImg.style = `--pos: ${(current / document.body.scrollHeight) * 100}%;`;
     };
 </script>
 

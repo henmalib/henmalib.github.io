@@ -1,6 +1,6 @@
 html,
 body {
-  @apply text-text bg-base min-h-screen;
+  @apply text-text bg-base min-h-screen scroll-smooth;
 }
 
 :root {

@@ -93,18 +93,16 @@ const t = useTranslation(lang);
             nekoImg.src = json.url;
             (nekoImg.parentElement! as HTMLAnchorElement).href = json.url;
         });
-
     
-    const body = document.body,
-    html = document.documentElement;
-
-    nekoImg.style = "--pos: 0%;"
-    window.onscroll = (e) => {
+    // It ISN'T readonly
+    // @ts-ignore
+    nekoImg.style = "--pos: 0%;";
+    window.onscroll = () => {
         const current = window.scrollY;
-        
-        nekoImg.style = `--pos: ${current / body.scrollHeight * 100}%;`
-    }
 
+        // @ts-ignore
+        nekoImg.style = `--pos: ${(current / body.scrollHeight) * 100}%;`;
+    };
 </script>
 
 <style>

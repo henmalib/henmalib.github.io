@@ -7,7 +7,17 @@ interface Props {
 
 const { lang } = Astro.props;
 
-const t = useTranslation(lang || "en");
+const t = useTranslation(lang);
+
+let localeLang;
+switch (lang) {
+    case "en":
+        localeLang = "en_US";
+        break;
+    case "uk":
+        localeLang = "uk_UA";
+        break;
+}
 
 const meta = {
     title: "simidzu2ay",
@@ -19,7 +29,7 @@ const meta = {
 <meta charset="UTF-8" />
 <meta name="generator" content={Astro.generator} />
 <meta name="color-scheme" content="dark" />
-<meta name="theme-color" content="var(--ctp-base)" />
+<meta name="theme-color" content="#c6a0f6" />
 
 <link rel="icon" type="image/x-icon" href={meta.icon} />
 <meta name="viewport" content="width=device-width" />
@@ -30,6 +40,7 @@ const meta = {
 <meta property="og:url" content={Astro.url} />
 <meta property="og:type" content="website" />
 <meta property="og:title" content={meta.title} />
+<meta property="og:locale" content={Astro.url} />
 <meta property="og:description" content={meta.description} />
 <meta property="og:image" content={meta.icon} />
 <meta property="og:image:width" content="460" />

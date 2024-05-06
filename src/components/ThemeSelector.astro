@@ -67,11 +67,20 @@ const themes = [
     const defaultTheme = "macchiato";
 
     let currentTheme = localStorage.getItem("theme") || defaultTheme;
+    let scheme = document.querySelector(
+        'meta[name="theme-color"]',
+    ) as HTMLMetaElement;
 
     const setTheme = (theme: string) => {
         currentTheme = theme;
         document.body.classList.add(theme);
         localStorage.setItem("theme", theme);
+
+        const currentColor = getComputedStyle(document.body).getPropertyValue(
+            "--ctp-base",
+        );
+
+        scheme.setAttribute("content", `rgb(${currentColor})`);
     };
 
     setTheme(currentTheme);

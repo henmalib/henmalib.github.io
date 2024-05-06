@@ -1,15 +1,27 @@
 html,
-body {
+body,
+header {
   @apply text-text bg-base min-h-screen scroll-smooth;
+}
+
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+b,
+html,
+body,
+header {
+  @apply transition-colors;
+  transition-duration: var(--color-duration);
 }
 
 :root {
   --color-duration: 0;
-}
-
-* {
-  @apply transition-colors;
-  transition-duration: var(--color-duration);
 }
 
 .middle {

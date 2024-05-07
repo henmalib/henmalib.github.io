@@ -1,5 +1,5 @@
 {
-  "name": "simidzu2ay.github.io",
+  "name": "henmalib.github.io",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@catppuccin/tailwindcss": "^0.1.6",
+    "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0"
   }
 }

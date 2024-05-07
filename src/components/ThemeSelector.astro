@@ -1,128 +1,125 @@
 ---
 const themes = [
-    {
-        name: "🌻 Latte",
-        value: "latte",
-    },
-    {
-        name: "🪴 Frappé",
-        value: "frappe",
-    },
-    {
-        name: "🌺 Macchiato",
-        value: "macchiato",
-    },
-    {
-        name: "🌿 Mocha",
-        value: "mocha",
-    },
+  {
+    name: '🌻 Latte',
+    value: 'latte'
+  },
+  {
+    name: '🪴 Frappé',
+    value: 'frappe'
+  },
+  {
+    name: '🌺 Macchiato',
+    value: 'macchiato'
+  },
+  {
+    name: '🌿 Mocha',
+    value: 'mocha'
+  }
 ];
 ---
 
 <div id="theme-selector" class="rounded-lg inline-block">
-    <button id="currentTheme" class="dropdown-option rounded-lg noto-emoji"
-    ></button>
+  <button id="currentTheme" class="dropdown-option rounded-lg noto-emoji"
+  ></button>
 
-    <div id="dropdown-theme" class="hidden">
-        <ul
-            class="absolute divide-y divide-surface0 z-10 rounded-lg overflow-hidden"
-        >
-            {
-                themes.map((o) => (
-                    <li
-                        role="button"
-                        data-value={o.value}
-                        class="dropdown-option noto-emoji"
-                    >
-                        {o.name}
-                    </li>
-                ))
-            }
-        </ul>
-    </div>
+  <div id="dropdown-theme" class="hidden">
+    <ul
+      class="absolute divide-y divide-surface0 z-10 rounded-lg overflow-hidden"
+    >
+      {
+        themes.map(o => (
+          <li
+            role="button"
+            data-value={o.value}
+            class="dropdown-option noto-emoji"
+          >
+            {o.name}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </div>
 
 <style>
-    #dropdown-theme {
-        @apply rounded-lg relative z-10;
-    }
+  #dropdown-theme {
+    @apply rounded-lg relative z-10;
+  }
 
-    #dropdown-theme ul {
-        @apply mt-2;
-    }
+  #dropdown-theme ul {
+    @apply mt-2;
+  }
 
-    .dropdown-option {
-        @apply bg-crust hover:bg-surface0 px-4 py-2 min-w-36 text-left select-none;
-    }
+  .dropdown-option {
+    @apply bg-crust hover:bg-surface0 px-4 py-2 min-w-36 text-left select-none;
+  }
 </style>
 
 <script>
-    const button = document.getElementById(
-        "currentTheme",
-    )! as HTMLButtonElement;
-    const dropdown = document.querySelector<HTMLUListElement>(
-        "#dropdown-theme > ul",
-    )!;
+  const button = document.getElementById('currentTheme')! as HTMLButtonElement;
+  const dropdown = document.querySelector<HTMLUListElement>(
+    '#dropdown-theme > ul'
+  )!;
 
-    const defaultTheme = "macchiato";
+  const defaultTheme = 'macchiato';
 
-    let currentTheme = localStorage.getItem("theme") || defaultTheme;
-    let scheme = document.querySelector(
-        'meta[name="theme-color"]',
-    ) as HTMLMetaElement;
+  let currentTheme = localStorage.getItem('theme') || defaultTheme;
+  let scheme = document.querySelector(
+    'meta[name="theme-color"]'
+  ) as HTMLMetaElement;
 
-    const setTheme = (theme: string) => {
-        currentTheme = theme;
-        document.body.classList.add(theme);
-        localStorage.setItem("theme", theme);
+  const setTheme = (theme: string) => {
+    currentTheme = theme;
+    document.body.classList.add(theme);
+    localStorage.setItem('theme', theme);
 
-        const currentColor = getComputedStyle(document.body).getPropertyValue(
-            "--ctp-base",
-        );
+    const currentColor = getComputedStyle(document.body).getPropertyValue(
+      '--ctp-base'
+    );
 
-        scheme.setAttribute("content", `rgb(${currentColor})`);
-    };
+    scheme.setAttribute('content', `rgb(${currentColor})`);
+  };
 
-    setTheme(currentTheme);
-    button.innerText = document.querySelector<HTMLLIElement>(
-        `li.dropdown-option[data-value="${currentTheme}"]`,
-    )!.innerText;
+  setTheme(currentTheme);
+  button.innerText = document.querySelector<HTMLLIElement>(
+    `li.dropdown-option[data-value="${currentTheme}"]`
+  )!.innerText;
 
-    dropdown.onclick = (e) => {
-        const target = e.target! as HTMLLIElement;
+  dropdown.onclick = e => {
+    const target = e.target! as HTMLLIElement;
 
-        if (!(target instanceof HTMLLIElement)) {
-            return;
-        }
-
-        document.body.classList.remove(currentTheme);
-        button.innerText = target.innerText;
-        dropdown.parentElement!.classList.add("hidden");
-        setTheme(target.dataset.value || defaultTheme);
-        document.removeEventListener("click", outsideClickListener);
-    };
-    button.onclick = () => {
-        const wasHidden = dropdown.parentElement!.classList.contains("hidden");
-        dropdown.parentElement!.classList.remove("hidden");
-
-        setTimeout(() => {
-            if (wasHidden)
-                document.addEventListener("click", outsideClickListener);
-        }, 0);
-    };
-
-    function outsideClickListener(event: MouseEvent) {
-        if (dropdown.contains(event.target as Node)) {
-            return;
-        }
-
-        dropdown.parentElement!.classList.add("hidden");
-        document.removeEventListener("click", outsideClickListener);
+    if (!(target instanceof HTMLLIElement)) {
+      return;
     }
 
+    document.body.classList.remove(currentTheme);
+    button.innerText = target.innerText;
+    dropdown.parentElement!.classList.add('hidden');
+    setTheme(target.dataset.value || defaultTheme);
+    document.removeEventListener('click', outsideClickListener);
+  };
+  button.onclick = () => {
+    const wasHidden = dropdown.parentElement!.classList.contains('hidden');
+    dropdown.parentElement!.classList.remove('hidden');
+
     setTimeout(() => {
-        // If it's readonly how tf it changes?
-        // @ts-ignore
-        document.body.style = "--color-duration: 300ms";
-    });
+      if (wasHidden) document.addEventListener('click', outsideClickListener);
+    }, 0);
+  };
+
+  function outsideClickListener(event: MouseEvent) {
+    if (dropdown.contains(event.target as Node)) {
+      return;
+    }
+
+    dropdown.parentElement!.classList.add('hidden');
+    document.removeEventListener('click', outsideClickListener);
+  }
+
+  setTimeout(() => {
+    // If it's readonly how tf it changes?
+    // @ts-ignore
+    document.body.style = '--color-duration: 300ms';
+  });
 </script>

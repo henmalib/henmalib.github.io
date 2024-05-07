@@ -1,32 +1,32 @@
 ---
-import "../styles/app.css";
-import ThemeSelector from "../components/ThemeSelector.astro";
-import LanguageSelector from "../components/LangSelector.astro";
-import { getLangFromUrl } from "../i18n/utils";
-import Meta from "../components/Meta.astro";
+import '../styles/app.css';
+import ThemeSelector from '../components/ThemeSelector.astro';
+import LanguageSelector from '../components/LangSelector.astro';
+import {getLangFromUrl} from '../i18n/utils';
+import Meta from '../components/Meta.astro';
 
 interface Props {
-    lang: ReturnType<typeof getLangFromUrl>;
+  lang: ReturnType<typeof getLangFromUrl>;
 }
 
-const { lang } = Astro.props;
+const {lang} = Astro.props;
 ---
 
 <html lang={lang}>
-    <head>
-        <Meta lang={lang} />
-    </head>
-    <body>
-        <header
-            class="w-full min-h-16 bg-mantle px-4 py-2 flex gap-4 justify-center items-center"
-        >
-            <ThemeSelector />
-            <LanguageSelector />
-        </header>
-        <main>
-            <slot />
-        </main>
-        <footer class="min-h-16"></footer>
-        <script></script>
-    </body>
+  <head>
+    <Meta lang={lang} />
+  </head>
+  <body>
+    <header
+      class="w-full min-h-16 bg-mantle px-4 py-2 flex gap-4 justify-center items-center"
+    >
+      <ThemeSelector />
+      <LanguageSelector />
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="min-h-16"></footer>
+    <script></script>
+  </body>
 </html>

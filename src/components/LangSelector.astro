@@ -1,83 +1,78 @@
 ---
-import { getLangFromUrl } from "../i18n/utils";
+import {getLangFromUrl} from '../i18n/utils';
 
 const langs = [
-    { name: "🇺🇦 Українська", path: "/uk" },
-    { name: "🇺🇸 English", path: "/en" },
+  {name: '🇺🇦 Українська', path: '/uk'},
+  {name: '🇺🇸 English', path: '/en'}
 ];
 
-const currentLangPath = "/" + getLangFromUrl(Astro.url);
-const currentLange = langs.find((l) => l.path === currentLangPath)!;
+const currentLangPath = '/' + getLangFromUrl(Astro.url);
+const currentLange = langs.find(l => l.path === currentLangPath)!;
 ---
 
 <div class="rounded-lg inline-block">
-    <button id="currentLang" class="dropdown-option rounded-lg noto-emoji"
-        >{currentLange.name}</button
-    >
+  <button id="currentLang" class="dropdown-option rounded-lg noto-emoji"
+    >{currentLange.name}</button
+  >
 
-    <div id="lang-dropdown" class="hidden">
-        <ul
-            class="absolute divide-y divide-surface0 z-10 rounded-lg overflow-hidden"
-        >
-            {
-                langs.map((o) => (
-                    <li
-                        role="link"
-                        data-href={o.path}
-                        class="dropdown-option noto-emoji"
-                    >
-                        {o.name}
-                    </li>
-                ))
-            }
-        </ul>
-    </div>
+  <div id="lang-dropdown" class="hidden">
+    <ul
+      class="absolute divide-y divide-surface0 z-10 rounded-lg overflow-hidden"
+    >
+      {
+        langs.map(o => (
+          <li role="link" data-href={o.path} class="dropdown-option noto-emoji">
+            {o.name}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </div>
 
 <style>
-    #lang-dropdown {
-        @apply rounded-lg relative z-10;
-    }
+  #lang-dropdown {
+    @apply rounded-lg relative z-10;
+  }
 
-    #lang-dropdown ul {
-        @apply mt-2;
-    }
+  #lang-dropdown ul {
+    @apply mt-2;
+  }
 
-    .dropdown-option {
-        @apply bg-crust hover:bg-surface0 px-4 py-2 min-w-40 text-left select-none cursor-pointer;
-    }
+  .dropdown-option {
+    @apply bg-crust hover:bg-surface0 px-4 py-2 min-w-40 text-left select-none cursor-pointer;
+  }
 </style>
 
 <script>
-    const button = document.getElementById("currentLang")! as HTMLButtonElement;
-    const dropdown = document.querySelector<HTMLUListElement>(
-        "#lang-dropdown > ul",
-    )!;
+  const button = document.getElementById('currentLang')! as HTMLButtonElement;
+  const dropdown = document.querySelector<HTMLUListElement>(
+    '#lang-dropdown > ul'
+  )!;
 
-    dropdown.onclick = (e) => {
-        if (!(e.target instanceof HTMLLIElement)) {
-            return;
-        }
-
-        window.location.href = e.target!.dataset.href!;
-        dropdown.parentElement!.classList.add("hidden");
-        document.removeEventListener("click", outsideClickListener);
-    };
-    button.onclick = () => {
-        const wasHidden = dropdown.parentElement!.classList.contains("hidden");
-        dropdown.parentElement!.classList.remove("hidden");
-        setTimeout(() => {
-            if (wasHidden)
-                document.addEventListener("click", outsideClickListener);
-        }, 0);
-    };
-
-    function outsideClickListener(event: MouseEvent) {
-        if (dropdown.contains(event.target as Node)) {
-            return;
-        }
-
-        dropdown.parentElement!.classList.add("hidden");
-        document.removeEventListener("click", outsideClickListener);
+  dropdown.onclick = e => {
+    if (!(e.target instanceof HTMLLIElement)) {
+      return;
     }
+
+    window.location.href = e.target!.dataset.href!;
+    dropdown.parentElement!.classList.add('hidden');
+    document.removeEventListener('click', outsideClickListener);
+  };
+  button.onclick = () => {
+    const wasHidden = dropdown.parentElement!.classList.contains('hidden');
+    dropdown.parentElement!.classList.remove('hidden');
+    setTimeout(() => {
+      if (wasHidden) document.addEventListener('click', outsideClickListener);
+    }, 0);
+  };
+
+  function outsideClickListener(event: MouseEvent) {
+    if (dropdown.contains(event.target as Node)) {
+      return;
+    }
+
+    dropdown.parentElement!.classList.add('hidden');
+    document.removeEventListener('click', outsideClickListener);
+  }
 </script>

@@ -1,10 +1,13 @@
 ---
-import { getLangFromUrl, useTranslation } from "../../i18n/utils";
-import Layout from "../../layouts/Layout.astro";
-import { Icon } from "astro-icon/components";
+import {ui} from '../../i18n/ui';
+import {getLangFromUrl, useTranslation} from '../../i18n/utils';
+import Layout from '../../layouts/Layout.astro';
+import {Icon} from 'astro-icon/components';
 
 export function getStaticPaths() {
-    return [{ params: { lang: "en" } }, { params: { lang: "uk" } }];
+  const langNames = Object.keys(ui) as (keyof typeof ui)[];
+
+  return langNames.map(lang => ({params: {lang}}));
 }
 
 const lang = getLangFromUrl(Astro.url);
@@ -12,111 +15,111 @@ const t = useTranslation(lang);
 ---
 
 <Layout lang={lang}>
-    <div class="middle">
-        <section>
-            <h3
-                class="text-2xl my-12 text-[transparent] font-bold bg-clip-text bg-gradient-to-r from-lavender to-mauve"
+  <div class="middle">
+    <section>
+      <h3
+        class="text-2xl my-12 text-[transparent] font-bold bg-clip-text bg-gradient-to-r from-lavender to-mauve"
+      >
+        {t('title')}
+      </h3>
+
+      <p
+        class="text-lg text-[transparent] bg-clip-text bg-gradient-to-br from-text to-subtext1"
+      >
+        <Fragment set:html={t('description')} />
+      </p>
+
+      <p class="mt-2 text-text text-xs">
+        <Fragment set:html={t('prevKnown')} />
+      </p>
+    </section>
+
+    <section class="mt-12">
+      <p><Fragment set:html={t('neko')} /></p>
+      <a target="_blank">
+        <img
+          class="object-cover min-w-full min-h-96 max-w-full sm:min-h-[32rem] max-h-96"
+          id="neko"
+        />
+      </a>
+    </section>
+
+    <section class="mt-12">
+      <h4>{t('connect')}</h4>
+
+      <div class="flex flex-col gap-2">
+        <ul class="flex flex-col mt-2 gap-2">
+          <li class="inline-flex items-center">
+            <Icon name="github" />
+            <span class="ml-1 min-w-24">Github</span>
+            <a
+              href="https://github.com/henmalib"
+              class="py-1 px-2 bg-mauve/15 rounded-full ml-4">@henmalib</a
             >
-                {t("title")}
-            </h3>
-
-            <p
-                class="text-lg text-[transparent] bg-clip-text bg-gradient-to-br from-text to-subtext1"
+          </li>
+          <li class="inline-flex items-center">
+            <Icon name="discord" />
+            <span class="ml-1 min-w-24">Discord</span>
+            <a
+              href="https://discordapp.com/users/279266228151779329"
+              class="py-1 px-2 bg-mauve/15 rounded-full ml-4">@henmalib</a
             >
-                <Fragment set:html={t("description")} />
-            </p>
-        </section>
-
-        <section class="mt-12">
-            <p><Fragment set:html={t("neko")} /></p>
-            <a target="_blank">
-                <img
-                    class="object-cover min-w-full min-h-96 max-w-full sm:min-h-[32rem] max-h-96"
-                    id="neko"
-                />
-            </a>
-        </section>
-
-        <section class="mt-12">
-            <h4>{t("connect")}</h4>
-
-            <div class="flex flex-col gap-2">
-                <ul class="flex flex-col mt-2 gap-2">
-                    <li class="inline-flex items-center">
-                        <Icon name="github" />
-                        <span class="ml-1 min-w-24">Github</span>
-                        <a
-                            href="https://github.com/simidzu2ay"
-                            class="py-1 px-2 bg-mauve/15 rounded-full ml-4"
-                            >@simidzu2ay</a
-                        >
-                    </li>
-                    <li class="inline-flex items-center">
-                        <Icon name="discord" />
-                        <span class="ml-1 min-w-24">Discord</span>
-                        <a
-                            href="https://discordapp.com/users/279266228151779329"
-                            class="py-1 px-2 bg-mauve/15 rounded-full ml-4"
-                            >@simidzu2ay</a
-                        >
-                    </li>
-                    <li class="inline-flex items-center">
-                        <Icon name="telegram" />
-                        <span class="ml-1 min-w-24">Telegram</span>
-                        <a
-                            href="https://t.me/simidzu2ay"
-                            class="py-1 px-2 bg-mauve/15 rounded-full ml-4"
-                            >@simidzu2ay</a
-                        >
-                    </li>
-                    <li class="inline-flex items-center">
-                        <Icon name="steam" />
-                        <span class="ml-1 min-w-24">Steam</span>
-                        <a
-                            href="https://steamcommunity.com/profiles/76561198276842908"
-                            class="py-1 px-2 bg-mauve/15 rounded-full ml-4"
-                            >simidzu2ay</a
-                        >
-                    </li>
-                </ul>
-            </div>
-        </section>
-    </div>
+          </li>
+          <li class="inline-flex items-center">
+            <Icon name="telegram" />
+            <span class="ml-1 min-w-24">Telegram</span>
+            <a
+              href="https://t.me/henmalib"
+              class="py-1 px-2 bg-mauve/15 rounded-full ml-4">@henmalib</a
+            >
+          </li>
+          <li class="inline-flex items-center">
+            <Icon name="steam" />
+            <span class="ml-1 min-w-24">Steam</span>
+            <a
+              href="https://steamcommunity.com/profiles/76561198276842908"
+              class="py-1 px-2 bg-mauve/15 rounded-full ml-4">simidzu2ay</a
+            >
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
 </Layout>
 
 <script>
-    const url = "https://nekos.life/api/v2/img/neko";
-    const nekoImg = document.getElementById("neko")! as HTMLImageElement;
-    fetch(url)
-        .then((r) => r.json())
-        .then((json) => {
-            nekoImg.src = json.url;
-            (nekoImg.parentElement! as HTMLAnchorElement).href = json.url;
-        });
-    
-    // It ISN'T readonly
-    // @ts-ignore
-    nekoImg.style = "--pos: 0%;";
-    window.onscroll = () => {
-        const current = window.scrollY;
+  const url = 'https://nekos.life/api/v2/img/neko';
+  const nekoImg = document.getElementById('neko')! as HTMLImageElement;
+  fetch(url)
+    .then(r => r.json())
+    .then(json => {
+      nekoImg.src = json.url;
+      (nekoImg.parentElement! as HTMLAnchorElement).href = json.url;
+    });
 
-        // @ts-ignore
-        nekoImg.style = `--pos: ${(current / document.body.scrollHeight) * 100}%;`;
-    };
+  // It ISN'T readonly
+  // @ts-ignore
+  nekoImg.style = '--pos: 0%;';
+  window.onscroll = () => {
+    const current = window.scrollY;
+
+    // @ts-ignore
+    nekoImg.style = `--pos: ${(current / document.body.scrollHeight) * 100}%;`;
+  };
 </script>
 
 <style>
-    #neko {
-        visibility: hidden;
-        object-position: 50% var(--pos);
-    }
+  #neko {
+    visibility: hidden;
+    object-position: 50% var(--pos);
+  }
 
-    #neko[src] {
-        visibility: visible;
-    }
+  #neko[src] {
+    visibility: visible;
+  }
 
-    [data-icon] {
-        font-size: 2rem;
-        @apply text-subtext1;
-    }
+  [data-icon] {
+    font-size: 2rem;
+    @apply text-subtext1;
+  }
 </style>

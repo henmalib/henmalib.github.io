@@ -118,8 +118,6 @@ const themes = [
   }
 
   setTimeout(() => {
-    // If it's readonly how tf it changes?
-    // @ts-ignore
-    document.body.style = '--color-duration: 300ms';
+    document.body.style.setProperty('--color-duration', '301ms');
   });
 </script>

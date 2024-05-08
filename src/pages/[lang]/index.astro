@@ -98,13 +98,14 @@ const t = useTranslation(lang);
     });
 
   // It ISN'T readonly
-  // @ts-ignore
-  nekoImg.style = '--pos: 0%;';
+  nekoImg.style.setProperty('--pos', '0%');
   window.onscroll = () => {
     const current = window.scrollY;
 
-    // @ts-ignore
-    nekoImg.style = `--pos: ${(current / document.body.scrollHeight) * 100}%;`;
+    nekoImg.style.setProperty(
+      '--pos',
+      `${(current / document.body.scrollHeight) * 100}%`
+    );
   };
 </script>
 

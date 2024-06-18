@@ -2,7 +2,7 @@
 import {ui} from '../../i18n/ui';
 import {getLangFromUrl, useTranslation} from '../../i18n/utils';
 import Layout from '../../layouts/Layout.astro';
-import {Icon} from 'astro-icon/components';
+import Link from '../../components/Link.astro';
 
 export function getStaticPaths() {
   const langNames = Object.keys(ui) as (keyof typeof ui)[];
@@ -49,46 +49,54 @@ const t = useTranslation(lang);
 
       <div class="flex flex-col gap-2">
         <ul class="flex flex-col mt-2 gap-2">
-          <li class="inline-flex items-center">
-            <Icon name="github" />
-            <span class="ml-1 min-w-24">Github</span>
-            <a
-              href="https://github.com/henmalib"
-              class="py-1 px-2 bg-mauve/15 rounded-full ml-4">@henmalib</a
-            >
-          </li>
-          <li class="inline-flex items-center">
-            <Icon name="discord" />
-            <span class="ml-1 min-w-24">Discord</span>
-            <a
-              href="https://discordapp.com/users/279266228151779329"
-              class="py-1 px-2 bg-mauve/15 rounded-full ml-4">@henmalib</a
-            >
-          </li>
-          <li class="inline-flex items-center">
-            <Icon name="telegram" />
-            <span class="ml-1 min-w-24">Telegram</span>
-            <a
-              href="https://t.me/henmalib"
-              class="py-1 px-2 bg-mauve/15 rounded-full ml-4">@henmalib</a
-            >
-          </li>
-          <li class="inline-flex items-center">
-            <Icon name="steam" />
-            <span class="ml-1 min-w-24">Steam</span>
-            <a
-              href="https://steamcommunity.com/profiles/76561198276842908"
-              class="py-1 px-2 bg-mauve/15 rounded-full ml-4">simidzu2ay</a
-            >
-          </li>
-          <li class="inline-flex items-center">
-            <Icon name="monkeytype" />
-            <span class="ml-1 min-w-24">Monkeytype</span>
-            <a
-              href="https://monkeytype.com/profile/henmalib"
-              class="py-1 px-2 bg-mauve/15 rounded-full ml-4">henmalib</a
-            >
-          </li>
+          <Link
+            iconName="github"
+            text="Github"
+            href="https://discordapp.com/users/279266228151779329"
+            shortlink="@henmalib"
+          />
+
+          <Link
+            iconName="discord"
+            text="Discord"
+            href="https://github.com/henmalib"
+            shortlink="@henmalib"
+          />
+
+          <Link
+            iconName="telegram"
+            text="Telegram"
+            href="https://t.me/henmalib"
+            shortlink="@henmalib"
+          />
+
+          <Link
+            iconName="steam"
+            text="Steam"
+            href="https://steamcommunity.com/profiles/76561198276842908"
+            shortlink="simidzu2ay"
+          />
+
+          <Link
+            iconName="monkeytype"
+            text="Monkeytype"
+            href="https://www.last.fm/user/Simidzu"
+            shortlink="henmalib"
+          />
+
+          <Link
+            iconName="wakatime"
+            text="Wakatime"
+            href="https://wakatime.com/@henmalib"
+            shortlink="henmalib"
+          />
+
+          <Link
+            iconName="lastfm"
+            text="Last.fm"
+            href="https://www.last.fm/user/Simidzu"
+            shortlink="Simidzu"
+          />
         </ul>
       </div>
     </section>

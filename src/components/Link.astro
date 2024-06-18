@@ -1,0 +1,29 @@
+---
+import {Icon} from 'astro-icon/components';
+
+interface Props {
+  iconName: string;
+  text: string;
+  href: string;
+  shortlink: string;
+}
+
+const props = Astro.props;
+---
+
+<li class="inline-flex items-center">
+  <div class="aspect-square w-8 flex items-center justify-center">
+    <Icon name={props.iconName} />
+  </div>
+  <span class="ml-2 min-w-24">{props.text}</span>
+  <a href={props.href} class="py-1 min-h-2 px-2 bg-mauve/15 rounded-full ml-4">
+    {props.shortlink}
+  </a>
+</li>
+
+<style>
+  [data-icon] {
+    font-size: 2rem;
+    @apply text-subtext1;
+  }
+</style>

@@ -104,13 +104,14 @@ const t = useTranslation(lang);
 </Layout>
 
 <script>
-  const url = 'https://nekos.life/api/v2/img/neko';
+  const url = 'https://nekos.best/api/v2/neko';
   const nekoImg = document.getElementById('neko')! as HTMLImageElement;
   fetch(url)
     .then(r => r.json())
     .then(json => {
-      nekoImg.src = json.url;
-      (nekoImg.parentElement! as HTMLAnchorElement).href = json.url;
+      const res = json.results[0];
+      nekoImg.src = res.url;
+      (nekoImg.parentElement! as HTMLAnchorElement).href = res.source_url;
     });
 
   nekoImg.style.setProperty('--pos', '0%');

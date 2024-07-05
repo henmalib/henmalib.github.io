@@ -1,15 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     colors: {},
-    extend: {},
+    extend: {}
   },
-  safelist: ["latte", "frappe", "macchiato", "mocha"],
+  safelist: ['latte', 'frappe', 'macchiato', 'mocha'],
   plugins: [
-    require("@catppuccin/tailwindcss")({
+    require('@catppuccin/tailwindcss')({
       prefix: false,
-      defaultFlavour: "mocha",
-    }),
-  ],
+      defaultFlavour: 'mocha'
+    })
+  ]
 };

@@ -34,14 +34,14 @@
 </script>
 
 
-<div class="block shrink-0 bg-mantle p-4 rounded-xl flex flex-row gap-4">
+<div class="shrink-0 bg-mantle p-4 rounded-xl flex flex-row gap-4 min-w-64">
   <a href={scrobble.url}> 
     <div class="w-16 h-16 shrink-0">
       <img src={scrobble.image} alt="album art" class="w-full h-full rounded-xl aspect-square">
     </div>
   </a>
 
-  <div class="shrink-0 flex flex-col justify-between">
+  <div class="shrink-0 grow flex flex-col justify-between">
     <a href={scrobble.url}>
       <h3>{scrobble.name}</h3>
       <h4 class="text-sm text-subtext0">{scrobble.artist}</h4>

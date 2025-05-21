@@ -10,7 +10,7 @@ export const ui = {
     'meta.description': 'Mini description with contact links',
     title: "ChatGPT is my best fan",
     description:
-      "beeps",
+      "I love breakcore",
     prevKnown:
       'Also i was previously known by someone as <spam class="text-mauve">@simidzu2ay</span>',
     connect: 'You can find me on the links below',
@@ -20,7 +20,7 @@ export const ui = {
     'meta.description': "Міні-опис з посиланнями зв'язку",
     title: 'ChatGPT мій самий ярий фанат',
     description:
-      "біп",
+      "Я люблю breakcore",
     prevKnown:
       'Деякі мене знають як <span class="text-mauve">@simidzu2ay</span>',
     connect: 'Ви можете знайти в будь-де в вказаних посиланнях',

@@ -8,7 +8,7 @@ export const defaultLang = 'en' satisfies keyof typeof languages;
 export const ui = {
   en: {
     'meta.description': 'Mini description with contact links',
-    title: "ChatGPT is my top 1 fan",
+    title: "ChatGPT is my best fan",
     description:
       "beeps",
     prevKnown:

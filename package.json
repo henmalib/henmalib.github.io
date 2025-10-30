@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro check && astro build && node ./scripts/generatetxt.js > dist/index.txt",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -22,8 +22,12 @@
   },
   "devDependencies": {
     "@catppuccin/tailwindcss": "^0.1.6",
+    "boxen": "^8.0.1",
+    "chalk": "^5.6.2",
     "prettier": "^3.3.2",
-    "prettier-plugin-astro": "^0.14.0"
+    "prettier-plugin-astro": "^0.14.0",
+    "string-width": "^8.1.0",
+    "strip-ansi": "^7.1.2"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

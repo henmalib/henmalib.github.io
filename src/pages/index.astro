@@ -1,14 +1,16 @@
 ---
 import Meta from "../components/Meta.astro";
+import {languages} from '../i18n/ui'
 ---
 
 <!doctype html>
 <html>
   <head>
     <Meta lang="en" />
-    <script>
+    <script is:inline define:vars={{languages}}>
       const userLang = navigator.language;
-      if (['en', 'uk'].includes(userLang)) {
+
+      if (Object.keys(languages).includes(userLang)) {
         window.location.href = `/${userLang}/`;
       } else {
         window.location.href = '/en/';

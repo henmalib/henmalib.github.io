@@ -4,6 +4,17 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 
 import svelte from '@astrojs/svelte';
+import {languages, defaultLocale} from './src/i18n/ui';
+
+const createLocales = () => {
+  const locales = {};
+
+  for (const key of Object.keys(languages)) {
+    locales[key] = key;
+  }
+
+  return locales;
+};
 
 export default defineConfig({
   integrations: [
@@ -11,14 +22,16 @@ export default defineConfig({
     icon(),
     sitemap({
       i18n: {
-        defaultLocale: 'en',
-        locales: {
-          en: 'en',
-          uk: 'uk'
-        }
+        defaultLocale,
+        locales: createLocales()
       }
     }),
     svelte()
   ],
-  site: 'https://henmalib.dev'
+  site: 'https://henmalib.dev',
+
+  server: {
+    host: true,
+    allowedHosts: ['qa.example.com']
+  }
 });

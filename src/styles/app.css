@@ -25,13 +25,13 @@ header {
 }
 
 .middle {
-  --margin: 25%;
+  --margin: 20%;
   margin: 2rem var(--margin);
 }
 
 @media screen and (max-width: 1200px) {
   .middle {
-    --margin: 20%;
+    --margin: 10%;
   }
 }
 

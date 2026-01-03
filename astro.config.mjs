@@ -28,10 +28,5 @@ export default defineConfig({
     }),
     svelte()
   ],
-  site: 'https://henmalib.dev',
-
-  server: {
-    host: true,
-    allowedHosts: ['qa.example.com']
-  }
+  site: 'https://henmalib.dev'
 });

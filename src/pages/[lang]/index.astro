@@ -17,99 +17,101 @@ const t = useTranslation(lang);
 
 <Layout lang={lang}>
   <div class="middle">
-    <section>
-      <h3
-        class="text-2xl my-12 text-[transparent] font-bold bg-clip-text bg-gradient-to-r from-lavender to-mauve"
-      >
-        {t('title')}
-      </h3>
+    <div class="md:grid md:grid-cols-2 md:gap-4">
+      <section>
+        <h3
+          class="text-2xl my-12 text-[transparent] font-bold bg-clip-text bg-gradient-to-r from-lavender to-mauve"
+        >
+          {t('title')}
+        </h3>
 
-      <p
-        class="text-lg text-[transparent] bg-clip-text bg-gradient-to-br from-text to-subtext1"
-      >
-        <Fragment set:html={t('description')} />
-      </p>
+        <p
+          class="text-lg text-[transparent] bg-clip-text bg-gradient-to-br from-text to-subtext1"
+        >
+          <Fragment set:html={t('description')} />
+        </p>
 
-      <p class="mt-2 text-text text-xs">
-        <Fragment set:html={t('prevKnown')} />
-      </p>
-    </section>
+        <p class="mt-2 text-text text-xs">
+          <Fragment set:html={t('prevKnown')} />
+        </p>
+      </section>
 
-    <section class="mt-12">
-      <p><Fragment set:html={t('neko')} /></p>
-      <a target="_blank">
-        <img
-          class="object-cover min-w-full min-h-96 max-w-full sm:min-h-[32rem] max-h-96"
-          id="neko"
-        />
-      </a>
-    </section>
-
-    <section class="mt-12">
-      <h4>{t('connect')}</h4>
-
-      <div class="flex flex-col gap-2">
-        <ul class="flex flex-col mt-2 gap-2">
-          <Link
-            iconName="github"
-            text="Github"
-            href="https://github.com/henmalib"
-            shortlink="@henmalib"
+      <section class="mt-12 md:row-span-2">
+        <p><Fragment set:html={t('neko')} /></p>
+        <a target="_blank">
+          <img
+            class="object-cover min-w-full min-h-96 max-w-full sm:min-h-[32rem] max-h-96"
+            id="neko"
           />
+        </a>
+      </section>
 
-          <Link
-            iconName="leetcode"
-            text="leetcode"
-            href="https://leetcode.com/u/henmalib"
-            shortlink="henmalib"
-          />
+      <section class="mt-12">
+        <h4>{t('connect')}</h4>
 
-          <Link
-            iconName="discord"
-            text="Discord"
-            href="https://discordapp.com/users/279266228151779329"
-            shortlink="@henmalib"
-          />
+        <div class="flex flex-col gap-2">
+          <ul class="flex flex-col mt-2 gap-2">
+            <Link
+              iconName="github"
+              text="Github"
+              href="https://github.com/henmalib"
+              shortlink="@henmalib"
+            />
 
-          <Link
-            iconName="telegram"
-            text="Telegram"
-            href="https://t.me/henmalib"
-            shortlink="@henmalib"
-          />
+            <Link
+              iconName="leetcode"
+              text="leetcode"
+              href="https://leetcode.com/u/henmalib"
+              shortlink="henmalib"
+            />
 
-          <Link
-            iconName="steam"
-            text="Steam"
-            href="https://steamcommunity.com/profiles/76561198276842908"
-            shortlink="henmalib"
-          />
+            <Link
+              iconName="discord"
+              text="Discord"
+              href="https://discordapp.com/users/279266228151779329"
+              shortlink="@henmalib"
+            />
 
-          <Link
-            iconName="monkeytype"
-            text="Monkeytype"
-            href="https://monkeytype.com/profile/henmalib"
-            shortlink="henmalib"
-          />
+            <Link
+              iconName="telegram"
+              text="Telegram"
+              href="https://t.me/henmalib"
+              shortlink="@henmalib"
+            />
 
-          <Link
-            iconName="wakatime"
-            text="Wakatime"
-            href="https://wakatime.com/@henmalib"
-            shortlink="henmalib"
-          />
+            <Link
+              iconName="steam"
+              text="Steam"
+              href="https://steamcommunity.com/profiles/76561198276842908"
+              shortlink="henmalib"
+            />
 
-          <Link
-            iconName="lastfm"
-            text="Last.fm"
-            href="https://www.last.fm/user/Simidzu"
-            shortlink="Simidzu"
-          />
-        </ul>
-      </div>
-    </section>
+            <Link
+              iconName="monkeytype"
+              text="Monkeytype"
+              href="https://monkeytype.com/profile/henmalib"
+              shortlink="henmalib"
+            />
 
-    <section class="mt-4" id="music">
+            <Link
+              iconName="wakatime"
+              text="Wakatime"
+              href="https://wakatime.com/@henmalib"
+              shortlink="henmalib"
+            />
+
+            <Link
+              iconName="lastfm"
+              text="Last.fm"
+              href="https://www.last.fm/user/Simidzu"
+              shortlink="Simidzu"
+            />
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <section class="mt-4 md:mt-12" id="music">
       <h4 class="text-xl mb-2">My last scrobbles:</h4>
       <MusicList client:load />
     </section>

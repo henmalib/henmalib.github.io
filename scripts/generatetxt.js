@@ -147,6 +147,8 @@ const socials = coloredText(
 
 const text = [];
 
+console.log(colors);
+
 text.push('');
 text.push(buildAscii());
 text.push(combineBoxes(2, aboutBox, socials));

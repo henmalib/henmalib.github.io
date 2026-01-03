@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build && node ./scripts/generatetxt.js > dist/index.txt",
+    "build": "astro check && astro build && FORCE_COLOR=1 node ./scripts/generatetxt.js > dist/index.txt",
     "preview": "astro preview",
     "astro": "astro"
   },

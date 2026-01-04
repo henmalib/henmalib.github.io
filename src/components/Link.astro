@@ -6,24 +6,81 @@ interface Props {
   text: string;
   href: string;
   shortlink: string;
+
+  lineColor?: string;
 }
 
 const props = Astro.props;
 ---
 
 <li class="inline-flex items-center">
-  <div class="aspect-square w-8 flex items-center justify-center">
-    <Icon name={props.iconName} />
+  <div class="flex flex-row gap-2 items-center select-none">
+    <div class="aspect-square w-8 flex items-center justify-center">
+      <Icon
+        name={props.iconName}
+        fill={props.lineColor}
+        color={props.lineColor}
+      />
+    </div>
+
+    <span class="ml-2 w-32">{props.text}</span>
   </div>
-  <span class="ml-2 min-w-24">{props.text}</span>
+
   <a href={props.href} class="py-1 min-h-2 px-2 bg-mauve/15 rounded-full ml-4">
     {props.shortlink}
   </a>
 </li>
 
+<div
+  class="line transition-[width] duration-300 ease-in-out"
+  style={`--color: ${props.lineColor}`}
+>
+</div>
+
+<script>
+  const collect = () => {
+    const lines = document.querySelectorAll(
+      '.line'
+    ) as NodeListOf<HTMLLIElement>;
+
+    for (const line of lines) {
+      if (line.style.getPropertyValue('--color').toString() === 'undefined') {
+        line.style.setProperty('--color', '#fff');
+      }
+
+      const link = line!.parentElement!.querySelector('a');
+
+      const width =
+        link!.getBoundingClientRect().right -
+        link!.parentElement!.getBoundingClientRect().left;
+
+      line.style.setProperty('--width', width + 'px');
+    }
+  };
+
+  window.onload = collect;
+  window.onresize = collect;
+</script>
+
 <style>
+  .line {
+    background: var(--color);
+    width: 0;
+    height: 0.25rem;
+    border-radius: 999999rem;
+  }
+
+  li:hover + .line,
+  line:hover {
+    width: var(--width);
+  }
+
   [data-icon] {
     font-size: 2rem;
+    @apply transition-colors duration-300;
+  }
+
+  li:not(:hover) [data-icon] {
     @apply text-subtext1;
   }
 </style>

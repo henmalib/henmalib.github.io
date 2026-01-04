@@ -110,7 +110,8 @@ const replaceColors = box => {
     Steam: colors.text,
     'Last.fm': colors.maroon,
     Wakatime: colors.lavander,
-    LeetCode: colors.yellow
+    LeetCode: colors.yellow,
+    BuyMeACoffee: colors.peach
   };
 
   const reg = /│\s+?((?:\w|\.)+).+?(henmalib\.dev\/.+?)\s/g;
@@ -131,17 +132,18 @@ const socials = coloredText(
   colors.mauve,
   replaceColors(
     `
-┌─Socials─────┬──────────────────────────┐
-│             │                          │
-│  Github     │ henmalib.dev/github      │
-│  Telegram   │ henmalib.dev/telegram    │
-│  Monkeytype │ henmalib.dev/monkeytype  │
-│  Steam      │ henmalib.dev/steam       │
-│  Last.fm    │ henmalib.dev/lastfm      │
-│  Wakatime   │ henmalib.dev/wakatime    │
-│  LeetCode   │ henmalib.dev/leetcode    │
-│             │                          │
-└─────────────┴──────────────────────────┘`
+┌─Socials─────────┬──────────────────────────┐
+│                 │                          │
+│  Github         │ henmalib.dev/github      │
+│  Telegram       │ henmalib.dev/telegram    │
+│  Monkeytype     │ henmalib.dev/monkeytype  │
+│  Steam          │ henmalib.dev/steam       │
+│  Last.fm        │ henmalib.dev/lastfm      │
+│  Wakatime       │ henmalib.dev/wakatime    │
+│  LeetCode       │ henmalib.dev/leetcode    │
+│  BuyMeACoffee   │ henmalib.dev/coffee      │
+│                 │                          │
+└─────────────────┴──────────────────────────┘`
   )
 );
 

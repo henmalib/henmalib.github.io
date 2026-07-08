@@ -2,6 +2,9 @@
   "name": "henmalib.dev",
   "type": "module",
   "version": "0.1.0",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -9,26 +12,24 @@
     "preview": "astro preview",
     "astro": "astro"
   },
-  "dependencies": {
+  "devDependencies": {
     "@astrojs/check": "^0.9.9",
     "@astrojs/node": "^11.0.2",
     "@astrojs/sitemap": "^3.7.3",
     "@astrojs/svelte": "^9.0.1",
     "@astrojs/tailwind": "^6.0.2",
+    "@catppuccin/tailwindcss": "^0.1.6",
     "astro": "^7.0.7",
     "astro-icon": "^1.1.0",
-    "svelte": "^5.56.4",
-    "tailwindcss": "^3.4.4",
-    "typescript": "^5.8.2"
-  },
-  "devDependencies": {
-    "@catppuccin/tailwindcss": "^0.1.6",
     "boxen": "^8.0.1",
     "chalk": "^5.6.2",
     "prettier": "^3.3.2",
     "prettier-plugin-astro": "^0.14.0",
     "string-width": "^8.1.0",
-    "strip-ansi": "^7.1.2"
+    "strip-ansi": "^7.1.2",
+    "svelte": "^5.56.4",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.8.2"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

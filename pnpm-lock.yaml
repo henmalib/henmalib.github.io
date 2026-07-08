@@ -7,7 +7,7 @@ settings:
 importers:
 
   .:
-    dependencies:
+    devDependencies:
       '@astrojs/check':
         specifier: ^0.9.9
         version: 0.9.9(prettier-plugin-astro@0.14.0)(prettier@3.3.2)(typescript@5.8.2)
@@ -23,25 +23,15 @@ importers:
       '@astrojs/tailwind':
         specifier: ^6.0.2
         version: 6.0.2(astro@7.0.7(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.2)(@types/node@24.13.3)(jiti@2.4.2)(rollup@4.35.0)(yaml@2.9.0))(tailwindcss@3.4.17)
+      '@catppuccin/tailwindcss':
+        specifier: ^0.1.6
+        version: 0.1.6(tailwindcss@3.4.17)
       astro:
         specifier: ^7.0.7
         version: 7.0.7(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.2)(@types/node@24.13.3)(jiti@2.4.2)(rollup@4.35.0)(yaml@2.9.0)
       astro-icon:
         specifier: ^1.1.0
         version: 1.1.0
-      svelte:
-        specifier: ^5.56.4
-        version: 5.56.4
-      tailwindcss:
-        specifier: ^3.4.4
-        version: 3.4.17
-      typescript:
-        specifier: ^5.8.2
-        version: 5.8.2
-    devDependencies:
-      '@catppuccin/tailwindcss':
-        specifier: ^0.1.6
-        version: 0.1.6(tailwindcss@3.4.17)
       boxen:
         specifier: ^8.0.1
         version: 8.0.1
@@ -60,6 +50,15 @@ importers:
       strip-ansi:
         specifier: ^7.1.2
         version: 7.1.2
+      svelte:
+        specifier: ^5.56.4
+        version: 5.56.4
+      tailwindcss:
+        specifier: ^3.4.4
+        version: 3.4.17
+      typescript:
+        specifier: ^5.8.2
+        version: 5.8.2
 
 packages:
 

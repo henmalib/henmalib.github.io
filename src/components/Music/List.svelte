@@ -1,9 +1,12 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import type { MouseEventHandler } from 'svelte/elements';
   import Card from './MusicCard.svelte'
 
-  let scrobbles: any[] = [];
-  let loading = true;
+  export let initialScrobbles: any[] = [];
+
+  let scrobbles = initialScrobbles;
+  let loading = initialScrobbles.length === 0;
   let error: string | null = null;
 
   async function fetchScroblles() {
@@ -21,8 +24,12 @@
     loading = false;
   }
 
-  fetchScroblles();
-  setInterval(fetchScroblles, 5000);
+  onMount(() => {
+    if (!scrobbles.length) fetchScroblles();
+
+    const interval = setInterval(fetchScroblles, 5000);
+    return () => clearInterval(interval);
+  });
 
   let isDragging = false;
   let startX = 0;

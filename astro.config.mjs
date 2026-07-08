@@ -4,7 +4,8 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 
 import svelte from '@astrojs/svelte';
-import {languages, defaultLocale} from './src/i18n/ui';
+import node from '@astrojs/node';
+import {languages, defaultLang} from './src/i18n/ui';
 
 const createLocales = () => {
   const locales = {};
@@ -22,11 +23,17 @@ export default defineConfig({
     icon(),
     sitemap({
       i18n: {
-        defaultLocale,
+        defaultLocale: defaultLang,
         locales: createLocales()
       }
     }),
     svelte()
   ],
-  site: 'https://henmalib.dev'
+
+  site: 'https://henmalib.dev',
+  output: 'server',
+
+  adapter: node({
+    mode: 'standalone'
+  })
 });

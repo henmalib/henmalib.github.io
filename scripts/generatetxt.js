@@ -1,4 +1,4 @@
-import {readFileSync, writeFileSync} from 'node:fs';
+import {mkdirSync, readFileSync, writeFileSync} from 'node:fs';
 import * as path from 'node:path';
 import boxen from 'boxen';
 import chalk from 'chalk';
@@ -149,8 +149,6 @@ const socials = coloredText(
 
 const text = [];
 
-console.log(colors);
-
 text.push('');
 text.push(buildAscii());
 text.push(combineBoxes(2, aboutBox, socials));
@@ -165,8 +163,7 @@ text.push(
   ].join(' ')
 );
 
-console.log(text.join('\n'));
-writeFileSync(
-  path.join(import.meta.dirname, '../dist/index.txt'),
-  text.join('\n') + '\n'
-);
+const outputPath = path.join(import.meta.dirname, './generated/index.txt');
+
+mkdirSync(path.dirname(outputPath), {recursive: true});
+writeFileSync(outputPath, text.join('\n') + '\n');

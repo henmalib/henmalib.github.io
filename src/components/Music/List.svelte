@@ -76,7 +76,7 @@
 {#if loading}
   <p>Loading...</p>
 {:else}
-  <div on:mousedown={mouseDown} on:mouseleave={leave} on:mouseup={leave} on:mousemove={mouseMove} class="flex cursor-grab flex-row gap-4 overflow-y-scroll">
+  <div role="list" on:mousedown={mouseDown} on:mouseleave={leave} on:mouseup={leave} on:mousemove={mouseMove} class="flex cursor-grab flex-row gap-4 overflow-y-scroll">
     {#each scrobbles as scrobble}
       <Card {scrobble} />
     {/each}
